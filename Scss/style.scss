@@ -1,0 +1,266 @@
+@import "variabels";
+@import "mixins";
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Arvo:ital@1&display=swap');
+
+* {
+    @include overal;
+}
+
+body {
+    background-color: $bgColor;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 3rem;
+    background-color: $primaryColor;
+
+    h1 {
+        @include textstyle(2.3rem, bold, $secondaryColor);
+        font-family: 'Arvo', serif;
+
+        &:hover {
+            background-color: $secondaryColor;
+            color: $primaryColor;
+            padding: 5px;
+            transition: all 0.2s ease-in-out;
+            border-radius: 5px;
+
+        }
+    }
+}
+
+.beregr-menu {
+    cursor: pointer;
+    flex-direction: column;
+    display: none;
+
+    span {
+        display: inline-block;
+        height: 3px;
+        width: 20px;
+        background: $secondaryColor;
+        margin: 2px;
+        border-radius: 3px;
+    }
+}
+
+.nav-bar {
+    display: flex;
+    align-items: center;
+
+    img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+
+    nav {
+        margin-right: 40px;
+    }
+
+    ul {
+        display: flex;
+        list-style-type: none;
+    }
+
+    a {
+        padding: 0px 10px;
+        text-decoration: none;
+        @include textstyle(1rem, bold, $secondaryColor);
+        transition: all .15s ease-in;
+
+        &:hover {
+            color: $textColor;
+        }
+    }
+}
+
+.main {
+    display: flex;
+    margin-top: 2rem 3rem;
+
+    aside {
+        @include bodyStyle;
+        @include boxstyle;
+        flex-direction: column;
+        width: 25%;
+        margin-right: 25px;
+
+
+        div {
+            @include boxstyle;
+            @include textstyle(1rem, bold, $secondaryColor);
+            background-color: $primaryColor;
+            width: 100%;
+            height: 110px;
+            margin: 20px 10px;
+            line-height: 110px;
+            text-align: center;
+        }
+    }
+
+    main {
+        @include bodyStyle;
+        @include boxstyle;
+        width: 75%;
+        flex-direction: column;
+
+        img {
+            @include boxstyle;
+            width: 400px;
+            height: 200px;
+        }
+
+        h2 {
+            @include textstyle(4rem, bold, $primaryColor);
+            margin-top: 2rem;
+
+        }
+
+        p {
+            @include textstyle(2rem, bold, $textColor);
+            margin-top: 2rem;
+        }
+    }
+}
+
+.cards {
+    width: calc(100% - 6rem);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    gap: 30px;
+    padding: 20px 0;
+}
+
+.card {
+    @include boxstyle;
+    background-color: $secondaryColor;
+
+    img {
+        width: 100%;
+    }
+
+    .card-content {
+        line-height: 1.5rem;
+        padding: 15px;
+        background-color: $secondaryColor;
+
+        p {
+            margin: 10px 0;
+            @include textstyle(1.1rem, 100, $textColor);
+        }
+
+        span {
+            display: inline-block;
+            margin-top: 10px 0;
+            @include textstyle(0.9rem, bold, $primaryColor);
+        }
+    }
+}
+
+footer {
+    display: flex;
+    padding: 2rem 3rem;
+    margin-top: 30px;
+    background-color: $primaryColor;
+
+
+    .summary {
+        width: 50%;
+
+        p {
+            @include textstyle(1.2rem, 100, $secondaryColor);
+            text-align: justify;
+        }
+    }
+
+    .links {
+        padding: 0 5rem;
+
+
+        ul {
+            list-style-type: none;
+        }
+
+        a {
+            @include textstyle(1.2rem, bold, $secondaryColor);
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: inline-block;
+            transition: all .15s ease-in;
+
+
+            &:hover {
+                color: $textColor;
+            }
+        }
+    }
+}
+
+
+@include media(L) {
+    .cards {
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+    }
+}
+
+@include media(M) {
+    .beregr-menu {
+        display: flex;
+    }
+
+    .nav-bar {
+        display: none;
+    }
+
+    .main {
+        flex-direction: column-reverse;
+        margin: 1rem;
+
+        main {
+            width: calc(100% - 2rem);
+            height: 500px;
+            margin-bottom: 20px;
+
+            p {
+                font-size: 1.3rem;
+            }
+
+        }
+
+        aside {
+            width: calc(100% - 2rem);
+            height: 600px;
+
+
+        }
+
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+        margin: 0 auto;
+    }
+
+    footer {
+        flex-direction: column;
+
+        .summary {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .links {
+            width: 100%;
+            padding: 0;
+            
+        }
+    }
+}
